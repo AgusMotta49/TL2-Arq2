@@ -10,17 +10,16 @@
 #include <TimeLib.h>
 #include <WiFiUdp.h>
 #include <FS.h> // Para SPIFFS
-
+#include "secrets.h"
 // ------------------- Configuración Inicial -------------------
 #define pinDatos 4 // D2 en D1 Mini (DHT22) GPI04
 #define DIRECCION_BMP280 0x76 // Dirección I2C del BMP280
 
-// Credenciales WiFi
-const char* ssid = "POCO C65";
-const char* password = "curupayti";
-// Credenciales del WiFi Access Point
-const char* ssidPropio = "DHT22BMP280";
-const char* passwordPropio = "tl2arq2undav";
+// Credenciales WiFi (STA y AP)
+const char* ssid = WIFI_SSID;                // Definido en secrets.h
+const char* password = WIFI_PASSWORD;        // Definido en secrets.h
+const char* ssidPropio = AP_SSID;            // Definido en secrets.h
+const char* passwordPropio = AP_PASSWORD;    // Definido en secrets.h
 
 // Firebase
 FirebaseData firebaseData;
@@ -108,7 +107,10 @@ void setup() {
   server.begin();
   // De forma manual crear API
   server.on("/ap", HTTP_GET, []() {
-    server.send(200, "text/html", "<h1>Configuración AP</h1><p>SSID: DHT22+BMP280</p><p>Contraseña: tl2arq2</p>");
+    String respuesta = "<h1>Configuración AP</h1>";
+    respuesta += "<p>SSID: " + String(AP_SSID) + "</p>";
+    respuesta += "<p>Contraseña: " + String(AP_PASSWORD) + "</p>";
+    server.send(200, "text/html", respuesta);
   });
 }
 void loop() {
@@ -191,10 +193,10 @@ void conectarWiFi() {
 }
 
 void configurarFirebase() {
-  config.api_key = "AIzaSyBUF-oj6rDEzZFlttKXjzUBY4OaVQYNtLE";
-  config.database_url = "https://arq2-tl2-temperatura-humedad-default-rtdb.firebaseio.com/";
-  auth.user.email = "medinadaniloantonio1@gmail.com";
-  auth.user.password = "tl2arq2";
+  config.api_key = FIREBASE_API_KEY;          // Definido en secrets.h
+  config.database_url = FIREBASE_DATABASE_URL;// Definido en secrets.h
+  auth.user.email = FIREBASE_USER_EMAIL;      // Definido en secrets.h
+  auth.user.password = FIREBASE_USER_PASSWORD;// Definido en secrets.h
   Firebase.reconnectWiFi(true);
 }
 
