@@ -1,0 +1,88 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+.modos {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modos button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.modos button.active {
+    background: #007bff;
+    color: white;
+}
+
+/* Secciones */
+.seccion {
+    display: none;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.seccion-activa {
+    display: block !important;
+}
+
+/* Gráficos */
+.graficos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+canvas {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+/* Filtros Historial */
+.filtros {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filtros input, .filtros button {
+    padding: 8px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Añadir esto para tooltips personalizados */
+.chartjs-tooltip {
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+}
+
+.grafico-container {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}

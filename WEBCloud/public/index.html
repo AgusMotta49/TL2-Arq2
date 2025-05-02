@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estación Meteorológica</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+    <!-- Botones de Navegación -->
+    <div class="modos">
+        <button id="btnTiempoReal" class="active">Tiempo Real</button>
+        <button id="btnHistorial">Historial</button>
+    </div>
+
+    <!-- Sección TIEMPO REAL -->
+    <div id="seccionTiempoReal" class="seccion seccion-activa">
+        <h1>Datos en Tiempo Real</h1>
+        <div class="graficos">
+            <div class="grafico-container">
+                <canvas id="chartTempDHTReal"></canvas>
+            </div>
+            <div class="grafico-container">
+                <canvas id="chartHumDHTReal"></canvas>
+            </div>
+            <div class="grafico-container">
+                <canvas id="chartTempBMPReal"></canvas>
+            </div>
+            <div class="grafico-container">
+                <canvas id="chartPresBMPReal"></canvas>
+            </div>
+        </div>
+        <div id="sinDatosTiempoReal" style="display: none; text-align: center; margin-top: 1rem; color: gray; font-style: italic;">
+            No hay datos disponibles para mostrar en Tiempo Real.
+        </div>        
+    </div>
+
+    <!-- Sección HISTORIAL -->
+    <div id="seccionHistorial" class="seccion seccion-oculta">
+        <h1>Historial de Datos</h1>
+        <div class="filtros">
+            <input type="date" id="fechaInicio">
+            <input type="date" id="fechaFin">
+            <button onclick="cargarHistorial()">Cargar</button>
+        </div>
+        <div class="graficos">
+            <div class="grafico-container">
+                <canvas id="chartTempDHTHistorial"></canvas>
+            </div>
+            <div class="grafico-container">
+                <canvas id="chartHumDHTHistorial"></canvas>
+            </div>
+            <div class="grafico-container">
+                <canvas id="chartTempBMPHistorial"></canvas>
+            </div>
+            <div class="grafico-container">
+                <canvas id="chartPresBMPHistorial"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
