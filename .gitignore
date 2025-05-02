@@ -1,2 +1,3 @@
 TL2V3ConFirebase/secrets.h
-/WEBCloud/firebase-config.js
+# Ignorar el archivo de configuración sensible de Firebase
+WEBCloud/firebase-config.js
